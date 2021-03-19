@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '1.0'
+metadata:
+  name: 'ztravel_app_123'
+type: application
+ui5Theme: sap_fiori_3
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-default_abap-trial
+          url: https://57526060-7030-478e-9b03-82a327646030.abap.eu10.hana.ondemand.com
+          scp: true
+        app:
+          name: ZTRAVEL_APP_123
+          description: deployment 123
+          package: ZTRAVEL_APP_123
+          transport: TRLK900737
